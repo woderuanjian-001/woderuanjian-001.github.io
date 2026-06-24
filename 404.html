@@ -27,6 +27,15 @@
   <!-- SEO：noindex 防止 404 被搜索引擎收录；canonical 指向主站避免重复内容 -->
   <link rel="canonical" href="https://woderuanjian-001.github.io/china-ai-tutorials/">
 
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGBSXEQEWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-PGBSXEQEWK");
+  </script>
+
   <!-- Open Graph：社交分享时显示主站信息，不让 404 被错误分享 -->
   <meta property="og:title" content="China AI Tutorials — Learn Chinese AI Models">
   <meta property="og:description" content="Hands-on tutorials for DeepSeek, Qwen, Kimi, GLM, and more Chinese AI tools.">
@@ -191,13 +200,13 @@
     // 2. GA4 404 埋点（可选：在 src/config.ts 启用 GA4 后取消注释）
     //    用于在 GA4 里追踪 404 来源（哪些外链/书签错了），方便修复
     // ============================================================================
-    // if (typeof gtag === 'function') {
-    //   gtag('event', 'page_404', {
-    //     'event_category': 'error',
-    //     'event_label': window.location.pathname,
-    //     'referrer': document.referrer
-    //   });
-    // }
+    if (typeof gtag === "function") {
+          gtag("event", "page_404", {
+            "event_category": "error",
+            "event_label": window.location.pathname,
+            "referrer": document.referrer
+          });
+    } 
   </script>
 </body>
 </html>
